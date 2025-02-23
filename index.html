@@ -47,14 +47,14 @@
 <body>
     <div class="sidebar">
         <h2>Ứng dụng</h2>
-        <a onclick="loadApp('https://onedrive.live.com/', false)">OneDrive</a>
-        <a onclick="loadApp('https://web.telegram.org/', false)">Telegram</a>
-        <a onclick="loadApp('https://zalo.me/', true)">Zalo</a>
-        <a onclick="loadApp('https://trello.com/', false)">Trello</a>
-        <a onclick="loadApp('https://docs.google.com/spreadsheets/d/1/', true)">Google Sheet 1</a>
-        <a onclick="loadApp('https://docs.google.com/spreadsheets/d/2/', true)">Google Sheet 2</a>
-        <a onclick="loadApp('https://docs.google.com/spreadsheets/d/3/', true)">Google Sheet 3</a>
-        <a onclick="loadApp('https://docs.google.com/spreadsheets/d/4/', true)">Google Sheet 4</a>
+        <a onclick="openApp('https://onedrive.live.com/')">OneDrive</a>
+        <a onclick="openApp('https://web.telegram.org/')">Telegram</a>
+        <a onclick="openApp('https://zalo.me/', true)">Zalo</a>
+        <a onclick="openApp('https://trello.com/')">Trello</a>
+        <a onclick="openApp('https://docs.google.com/spreadsheets/d/17KIedPOTqwBnzG_HwD309kV7CE7tyYmiKPnhdw4UQ0A/edit?gid=0#gid=0', true)">Google Sheet 1</a>
+        <a onclick="openApp('https://docs.google.com/spreadsheets/d/2/', true)">Google Sheet 2</a>
+        <a onclick="openApp('https://docs.google.com/spreadsheets/d/3/', true)">Google Sheet 3</a>
+        <a onclick="openApp('https://docs.google.com/spreadsheets/d/4/', true)">Google Sheet 4</a>
     </div>
     <div class="content">
         <iframe id="appFrame" src=""></iframe>
@@ -62,12 +62,12 @@
     <script>
         let appWindow = null;
         
-        function loadApp(url, useIframe) {
+        function openApp(url, useIframe = false) {
             if (useIframe) {
                 document.getElementById('appFrame').src = url;
             } else {
                 if (!appWindow || appWindow.closed) {
-                    appWindow = window.open(url, 'appWindow', 'width=1200,height=800,top=100,left=200,resizable=yes');
+                    appWindow = window.open(url, '_blank', 'width=1200,height=800,top=100,left=200,resizable=yes,noopener,noreferrer');
                 } else {
                     appWindow.location.href = url;
                     appWindow.focus();
